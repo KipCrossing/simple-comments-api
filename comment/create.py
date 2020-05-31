@@ -46,12 +46,3 @@ def create(event, context):
 
     # return response
     return response
-
-
-def make_vote_id(pub_key, id, ballotspec_hash, constituency):
-    h = hashlib.sha256()
-    h.update(str(pub_key).encode('utf-8') +
-             str(id).encode('utf-8') +
-             str(ballotspec_hash).encode('utf-8') +
-             str(constituency).encode('utf-8'))
-    return(h.hexdigest())
