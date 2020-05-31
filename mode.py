@@ -18,7 +18,7 @@ if user is not None and pwd is not None:
 else:
     cluster = False
 
-cluster = False
+# cluster = False
 
 ms = {
     # MONGODB: os.environ['MONGO_DB_NAME'],

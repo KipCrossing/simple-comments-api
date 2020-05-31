@@ -2,6 +2,68 @@
 A simple serverless api (python) for reading and making comments on a topic
 
 
+## Public Contracts
+
+```
+endpoints:
+  GET - https://nakkqadvg1.execute-api.ap-southeast-2.amazonaws.com/dev/comment/{command}
+  POST - https://nakkqadvg1.execute-api.ap-southeast-2.amazonaws.com/dev/comment
+```
+
+### Post a Comment
+
+**POST**
+
+```
+https://nakkqadvg1.execute-api.ap-southeast-2.amazonaws.com/dev/comment
+```
+
+Example body:
+
+```
+{
+"topic": "r1234",
+"user": "David",
+"comment": "This is great!"
+}
+```
+
+### Get Comments of Topic
+
+**GET**
+
+```
+https://nakkqadvg1.execute-api.ap-southeast-2.amazonaws.com/dev/comment/r1234
+```
+
+Example response:
+
+
+```
+[
+    {
+        "_id": "r1234_2",
+        "topic": "r1234",
+        "number": 2,
+        "comment_info": {
+            "user": "Jess",
+            "comment": "It so is!",
+            "time": "2020-05-31 10:27:50.171938"
+        }
+    },
+    {
+        "_id": "r1234_1",
+        "topic": "r1234",
+        "number": 1,
+        "comment_info": {
+            "user": "david",
+            "comment": "This is great!",
+            "time": "2020-05-31 10:27:04.222391"
+        }
+    }
+]
+```
+
 ## Getting started
 
 ### On first time
@@ -33,15 +95,6 @@ Start MongoDB
 
 ```
 sudo systemctl start mongod
-```
-
-Populate/update the DB
-
-```
-python3 update_bills_db.py
-python3 update_issues_db.py
-python3 update_ballotspecs_db.py
-python3 update_results_db.py
 ```
 
 'python3 update_bills_db.py' _may be run on loop every few hours to update DB_
