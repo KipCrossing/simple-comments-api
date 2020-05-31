@@ -1,0 +1,41 @@
+app: simple-comments-api
+service: simple-comments-api
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  region: ap-southeast-2
+  runtime: python3.7
+  environment:
+    MONGO_DB_USER: ${env:MONGO_DB_USER}
+    MONGO_DB_PASS: ${env:MONGO_DB_PASS}
+    MONGO_DB_NAME: votingdb
+    MONGO_DB_URL: ${env:MONGO_DB_URL}
+    ISSUE_CREATE_TOKEN: ${env:ISSUE_CREATE_TOKEN}
+  iamManagedPolicies:
+    - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
+functions:
+  getcomments:
+    handler: comment/get.get
+    events:
+      - http:
+          path: comment/{command}
+          method: get
+          cors: true
+
+
+  makecomment:
+    handler: comment/create.create
+    events:
+      - http:
+          path: comment
+          method: post
+          cors: true
+

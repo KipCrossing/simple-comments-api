@@ -1,0 +1,14 @@
+{
+  "name": "simple-comments-api",
+  "version": "0.1.0",
+  "description": "comments api with mongodb",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "serverless": "^1.70.0",
+    "serverless-python-requirements": "^5.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^6.1.3"
+  }
+}
